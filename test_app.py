@@ -1,17 +1,11 @@
 import pytest
-import calc
+import app
+import requests
 
 
-def test_add():
-    assert calc.add(1, 1) == 2
-    assert calc.add(2, 2) == 4
+def test_correct_mean():
+    assert requests.get('http://localhost:5000/mean?list=1&list=2&list=3&list=4').content == 2.5
 
 
-def test_subtract():
-    assert calc.subtract(2, 1) == 1
-    assert calc.subtract(1, 2) == -1
-
-
-def test_divide():
-    assert calc.divide(4, 2) == 2
-    assert calc.divide(1, 2) == 0.5
+def test_url_up():
+    assert requests.get('http://localhost:5000').status_code == 200, "The website is not up"
