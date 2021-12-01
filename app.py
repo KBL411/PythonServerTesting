@@ -14,6 +14,5 @@ def hello():
 @app.route('/mean', methods=['GET'])
 def mean():
     da_list = request.args.getlist("list", type=int)
-    list_mean = np.mean(da_list)
-    return "The list: '{}' \n The mean '{}'".format(da_list, list_mean)
+    return format(np.mean(da_list))
 
